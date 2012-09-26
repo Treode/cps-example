@@ -25,9 +25,9 @@ import com.treode.cps.buffer.{Buffer, InputBuffer}
 import com.treode.cps.io.{ServerSocket, ServerSocketLive, Socket, SocketLive}
 import com.treode.cps.scheduler.{Scheduler, SchedulerConfig}
 
-// The Example provides the server and client, but it does not specify a runtime system.  The
-// test specifies a stub runtime system to facilitation testing, and the scripts provide the
-// live runtime system for actual operation.
+// The Example provides the server and client, but it requires a runtime system to provide a
+// scheduler and sockets.  The test specifies a stub runtime system to facilitation testing, and the
+// scripts provide the live runtime system for actual operation.
 trait ExampleKit {
   this: CpsKit with CpsSocketKit =>
 

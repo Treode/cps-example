@@ -38,5 +38,8 @@ import java.net.InetSocketAddress
 import com.treode.cps.{CpsLiveConfig, CpsLiveKit, CpsLiveSocketKit}
 import com.treode.cps.example.ExampleKit
 
+// We mix-in the CpsLiveKit to use the ForkJoinPool as the executor of all
+// continuations tasks, and we mix-in the CpsLiveSocketKit to listen and connect
+// on real sockets.
 val kit = new CpsLiveKit (new CpsLiveConfig {}) with CpsLiveSocketKit with ExampleKit
 kit.launchServer (new InetSocketAddress ("0.0.0.0", 4567))

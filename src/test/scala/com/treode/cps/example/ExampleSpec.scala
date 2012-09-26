@@ -19,15 +19,23 @@ import com.treode.cps.{CpsFlatSpec, CpsSpecKit, CpsStubSocketKit}
 import com.treode.cps.buffer.InputBuffer
 import com.treode.cps.io.SocketAddressStub
 
-// Use CpsFlatSpec rather than FlatSpec.  It provides a few methods to wrap @thunk.
+// Use CpsFlatSpec rather than Scalatest's FlatSpec, as it provides a few methods to wrap @thunk.
+// There is also a CpsPropSpec to complement Scalatest's PropSpec.
 class ExampleSpec extends CpsFlatSpec {
 
+  // We mix-in the Sequential spec key to use a single threaded scheduler that handles
+  // continuations tasks in FIFO order, and we mix-in the CpsStubSocketKit to listen and connect
+  // on simulated sockets.  We could also mix-in CpsSpecKit.RandomKit, which uses a single
+  // threaded scheduler that handles tasks in a psuedo-random order.  When combined with `forAll`
+  // from CpsPropSpec to generate the psuedo-random seed, one has a way to run a test with tasks
+  // repeatably scheduled in a different orders.  This can detect some race conditions in a
+  // repeatable and debuggable way.
   class Kit extends CpsSpecKit.Sequential with CpsStubSocketKit with ExampleKit
 
   // Use "during" rather than "in".  It wraps @thunk.
   "The server" should "echo the request" during {
-    // Use "withCpsKit".  It wraps the remainder of the test with code to run the tasks;
-    // otherwise nothing ever gets scheduled, and the test does not actually do anything.
+    // Use "withCpsKit".  It wraps the remainder of the test with code to run the tasks; otherwise
+    // nothing ever gets scheduled, and the test does not actually do anything.
     val kit = withCpsKit (new Kit)
     val addr = SocketAddressStub (new Random (0), kit.scheduler)
     kit.launchServer (addr)
