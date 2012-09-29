@@ -45,7 +45,7 @@ object CpsExampleBuild extends Build {
     // configuration includes those and adds additional support of interest only
     // to scalatest users.
     libraryDependencies ++= Seq (
-      "com.treode" %% "cps" % "0.1.0" % "compile;test->scalatest"))
+      "com.treode" %% "cps" % "0.2.0" % "compile;test->scalatest"))
 
   lazy val root = Project ("root", file ("."))
     .settings (exampleSettings: _*)

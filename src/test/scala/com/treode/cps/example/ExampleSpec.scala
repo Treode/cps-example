@@ -15,9 +15,10 @@
 
 package com.treode.cps.example
 
-import com.treode.cps.{CpsFlatSpec, CpsSpecKit, CpsStubSocketKit}
 import com.treode.cps.buffer.InputBuffer
-import com.treode.cps.io.SocketAddressStub
+import com.treode.cps.scalatest.{CpsFlatSpec}
+import com.treode.cps.stub.{CpsSpecKit, CpsStubSocketKit}
+import com.treode.cps.stub.io.SocketAddressStub
 
 // Use CpsFlatSpec rather than Scalatest's FlatSpec, as it provides a few methods to wrap @thunk.
 // There is also a CpsPropSpec to complement Scalatest's PropSpec.

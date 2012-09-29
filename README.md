@@ -1,6 +1,6 @@
 # An example using the Treode CPS library.
 
-The
+This project illustrates how to use the [CPS Library](https://github.com/Treode/cps).  The
 [ExampleKit](https://github.com/Treode/cps-example/blob/master/src/main/scala/com/treode/cps/example/ExampleKit.scala)
 shows how to assemble a basic echo server and client.  The
 [ExampleSpec](https://github.com/Treode/cps-example/blob/master/src/test/scala/com/treode/cps/example/ExampleSpec.scala)
@@ -12,3 +12,6 @@ The scripts
 [echo-server](https://github.com/Treode/cps-example/blob/master/scripts/echo-server) and
 [echo-client](https://github.com/Treode/cps-example/blob/master/scripts/echo-client)
 show how to bring up the server and run a client.
+
+Browse or subscribe to the [online forum](https://groups.google.com/forum/#!forum/scala-cps-io) for
+the CPS Library.
