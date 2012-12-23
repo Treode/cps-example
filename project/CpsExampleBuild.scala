@@ -37,6 +37,10 @@ object CpsExampleBuild extends Build {
       "treode-oss-releases",
       new URL ("http://treode.artifactoryonline.com/treode/oss-releases")) (Resolver.ivyStylePatterns),
 
+    resolvers += Resolver.url (
+      "treode-oss-snapshots",
+      new URL ("http://treode.artifactoryonline.com/treode/oss-snapshots")) (Resolver.ivyStylePatterns),
+
     // We make the test configuration (of this project) depend on the scalatest
     // configuration (of the CPS dependency).  The CPS project provides testing
     // support in two additional configurations (stub and scalatest), so that
@@ -45,7 +49,7 @@ object CpsExampleBuild extends Build {
     // configuration includes those and adds additional support of interest only
     // to scalatest users.
     libraryDependencies ++= Seq (
-      "com.treode" %% "cps" % "0.2.0" % "compile;test->scalatest"))
+      "com.treode" %% "cps" % "0.3.0-SNAPSHOT" % "compile;test->scalatest"))
 
   lazy val root = Project ("root", file ("."))
     .settings (exampleSettings: _*)

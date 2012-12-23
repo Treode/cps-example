@@ -17,18 +17,19 @@ package com.treode.cps.example
 
 import java.net.SocketAddress
 import java.nio.ByteBuffer
-import java.nio.channels.{AsynchronousChannelGroup => JGroup, ClosedChannelException}
+import java.nio.channels.ClosedChannelException
 import java.nio.charset.StandardCharsets.UTF_8
-import java.util.concurrent.{ForkJoinPool, ScheduledThreadPoolExecutor, ThreadFactory}
 import com.treode.cps.{CpsKit, CpsSocketKit, cut, thunk}
 import com.treode.cps.buffer.{Buffer, InputBuffer}
-import com.treode.cps.io.{ServerSocket, ServerSocketLive, Socket, SocketLive}
-import com.treode.cps.scheduler.{Scheduler, SchedulerConfig}
+import com.treode.cps.io.{ServerSocket, Socket}
+import com.treode.cps.scheduler.Scheduler
+import com.treode.cps.CpsSocketKit
 
-// The Example provides the server and client, but it requires a runtime system to provide a
-// scheduler and sockets.  The test specifies a stub runtime system to facilitation testing, and the
-// scripts provide the live runtime system for actual operation.
 trait ExampleKit {
+
+  // The Example provides the server and client, but it requires a runtime system to provide a
+  // scheduler and sockets.  The test specifies a stub runtime system to facilitation testing, and
+  // the scripts provide the live runtime system for actual operation.
   this: CpsKit with CpsSocketKit =>
 
   private [example] def readString (buf: InputBuffer) = {
